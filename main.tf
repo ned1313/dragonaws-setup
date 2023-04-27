@@ -14,7 +14,11 @@ module "dragondrop-compute" {
 # Create an S3 bucket for migration history
 resource "aws_s3_bucket" "migration_history" {
   bucket = "${var.naming_prefix}-migration-history"
-  acl    = "private"
+}
+
+resource "aws_s3_bucket_acl" "migration_history" {
+  bucket = aws_s3_bucket.migration_history.id
+    acl    = "private"
 }
 
 # Grant service account access to S3 bucket
