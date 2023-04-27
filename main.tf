@@ -1,4 +1,6 @@
-
+provider "aws" {
+  region = var.aws_region
+}
 
 module "dragondrop-compute" {
   source  = "dragondrop-cloud/dragondrop-compute/aws"
